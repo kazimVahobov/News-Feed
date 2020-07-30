@@ -15,6 +15,7 @@ class MainFragmentPresenter(private val view: MainFragmentInterface.View) :
     private val repository by instance<ArticleRepository>()
 
     override fun loadArticles() {
+        view.showLoading()
         val qParam = "android"
         val fromDate = "2019-04-00"
         val sortType = "publishedAt"
@@ -26,11 +27,13 @@ class MainFragmentPresenter(private val view: MainFragmentInterface.View) :
                 response.articles?.let {
                     view.onGetArticles(response.articles!!)
                     repository.saveArticles(response.articles!!)
+                    view.hideLoading()
                 }
             }
         } else {
             Coroutines.main {
                 view.onGetArticles(repository.getArticles())
+                view.hideLoading()
             }
         }
     }

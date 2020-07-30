@@ -39,4 +39,12 @@ class MainFragment : Fragment(), MainFragmentInterface.View {
     private fun onArticleClicked(url: String) {
         EventBus.getDefault().post(EBOnArticleClick(url))
     }
+
+    override fun hideLoading() {
+        animationView.visibility = View.GONE
+    }
+
+    override fun showLoading() {
+        animationView.visibility = View.VISIBLE
+    }
 }

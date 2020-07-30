@@ -4,6 +4,8 @@ import com.example.newsfeed.data.db.entities.Article
 
 interface MainFragmentInterface {
     interface View {
+        fun showLoading()
+        fun hideLoading()
         fun onGetArticles(articles: MutableList<Article>)
     }
 
