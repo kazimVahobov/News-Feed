@@ -1,11 +1,12 @@
-package com.example.newsfeed.db
+package com.example.newsfeed.data.db
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.newsfeed.db.dao.ArticleDao
-import com.example.newsfeed.db.entities.Article
+import com.example.newsfeed.data.db.dao.ArticleDao
+import com.example.newsfeed.data.db.entities.Article
 
 @Database(
     entities = [Article::class],
@@ -13,16 +14,20 @@ import com.example.newsfeed.db.entities.Article
 )
 abstract class AppDB : RoomDatabase() {
 
+    init {
+        Log.e("##AppDB", "created")
+    }
+
     abstract fun getArticleDao(): ArticleDao
 
     companion object {
 
         @Volatile
-        private var instanse: AppDB? = null
+        private var instance: AppDB? = null
         private val LOCK = Any()
 
-        operator fun invoke(context: Context) = instanse ?: synchronized(LOCK) {
-            instanse ?: buildDataBase(context)
+        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
+            instance ?: buildDataBase(context)
         }
 
         private fun buildDataBase(context: Context) =

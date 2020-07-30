@@ -1,6 +1,7 @@
-package com.example.newsfeed.network
+package com.example.newsfeed.data.network
 
-import com.example.newsfeed.network.responses.GetNewsResponse
+import android.util.Log
+import com.example.newsfeed.data.network.responses.GetArticlesResponse
 import com.example.newsfeed.utils.Constants
 import okhttp3.OkHttpClient
 import retrofit2.Response
@@ -11,18 +12,18 @@ import retrofit2.http.Query
 
 interface API {
 
-    @GET(Constants.NEWS_PAGE_API)
-    fun getNews(
+    @GET(Constants.ARTICLES_PAGE_API)
+    suspend fun getArticles(
         @Query("q") qParam: String,
         @Query("from") fromDate: String,
         @Query("sortBy") sortType: String,
         @Query("apiKey") apiKey: String,
         @Query("page") page: Int
-    ): Response<GetNewsResponse>
+    ): Response<GetArticlesResponse>
 
     companion object {
         operator fun invoke(networkConnectionInterceptor: NetworkConnectionInterceptor): API {
-
+            Log.e("##API", "created")
             val okHttpClient =
                 OkHttpClient.Builder().addInterceptor(networkConnectionInterceptor).build()
 

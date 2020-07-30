@@ -1,4 +1,4 @@
-package com.example.newsfeed.network
+package com.example.newsfeed.data.network
 
 import com.example.newsfeed.utils.ApiExceptions
 import org.json.JSONObject

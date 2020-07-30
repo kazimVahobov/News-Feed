@@ -1,10 +1,10 @@
-package com.example.newsfeed.db.dao
+package com.example.newsfeed.data.db.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.newsfeed.db.entities.Article
+import com.example.newsfeed.data.db.entities.Article
 
 @Dao
 interface ArticleDao {
@@ -12,5 +12,5 @@ interface ArticleDao {
     fun saveArticles(articles: MutableList<Article>)
 
     @Query("SELECT * FROM Article")
-    fun getQuotes(): MutableList<Article>
+    fun getArticles(): MutableList<Article>
 }

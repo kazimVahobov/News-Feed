@@ -1,4 +1,4 @@
-package com.example.newsfeed.ui.main_activity
+package com.example.newsfeed.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.newsfeed.R
-import com.example.newsfeed.db.entities.Article
+import com.example.newsfeed.data.db.entities.Article
 import com.example.newsfeed.utils.Utils
 
 class MainListAdapter(
@@ -29,12 +30,12 @@ class MainListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = list[position]
+        val article = list[position]
         holder.relativeLayout.animation = AnimationUtils.loadAnimation(context, R.anim.fade_scale)
-        holder.title.text = item.title
-        holder.content.text = item.content
-        holder.time.text = Utils.formattingDate(item.publishedAt!!)
-        Glide.with(context).load(item.urlToImage).into(holder.image)
+        holder.title.text = article.title
+        holder.content.text = article.content
+//        holder.time.text = Utils.formattingDate(article.publishedAt!!)
+        Glide.with(context).load(article.urlToImage).into(holder.image)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -42,6 +43,6 @@ class MainListAdapter(
         var content: TextView = itemView.findViewById(R.id.contentTV)
         var time: TextView = itemView.findViewById(R.id.dateTV)
         var image: ImageView = itemView.findViewById(R.id.imageIV)
-        var relativeLayout: RelativeLayout = itemView.findViewById(R.id.linearLayout)
+        var relativeLayout: LinearLayout = itemView.findViewById(R.id.linearLayout)
     }
 }
