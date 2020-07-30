@@ -1,7 +1,8 @@
-package com.example.newsfeed
+package com.example.newsfeed.ui.main_activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.newsfeed.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
