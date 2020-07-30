@@ -26,7 +26,7 @@ class ArticleRepository(private val api: API, private val appDB: AppDB) : SafeAp
         return apiRequest { api.getArticles(qParam, fromDate, sortType, apiKey, page) }
     }
 
-    fun getArticles() = appDB.getArticleDao().getArticles()
+    suspend fun getArticles() = appDB.getArticleDao().getArticles()
 
     fun saveArticles(list: MutableList<Article>) {
         Coroutines.io {

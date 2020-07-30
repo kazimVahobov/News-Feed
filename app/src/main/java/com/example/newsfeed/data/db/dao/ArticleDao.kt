@@ -9,8 +9,8 @@ import com.example.newsfeed.data.db.entities.Article
 @Dao
 interface ArticleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun saveArticles(articles: MutableList<Article>)
+    suspend fun saveArticles(articles: MutableList<Article>)
 
     @Query("SELECT * FROM Article")
-    fun getArticles(): MutableList<Article>
+    suspend fun getArticles(): MutableList<Article>
 }

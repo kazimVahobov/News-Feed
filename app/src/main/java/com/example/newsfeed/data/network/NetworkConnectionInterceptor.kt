@@ -21,6 +21,16 @@ class NetworkConnectionInterceptor(context: Context) : Interceptor {
         return chain.proceed(chain.request())
     }
 
+    companion object {
+        fun isInternetAvailable(context: Context): Boolean {
+            val connectivityManager =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            connectivityManager.activeNetworkInfo.also {
+                return it != null && it.isConnected
+            }
+        }
+    }
+
     fun isInternetAvailable(): Boolean {
         val connectivityManager =
             applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

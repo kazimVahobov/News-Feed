@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
-    <color name="mainBGColor">#FFFFFF</color>
-    <color name="mainBGNightColor">#000000</color>
+    <color name="colorPrimary">#42CDCA</color>
+    <color name="colorPrimaryDark">#42CDCA</color>
+    <color name="colorAccent">#42CDCA</color>
 
-    <color name="cardBgColor">#f6f6f6</color>
-    <color name="cardBgNightColor">#0e0e0e</color>
-    <color name="titleTextColor">#258bd6</color>
+    <color name="cardBgColor">#F4F4F4</color>
     <color name="contentTextColor">#999da4</color>
-    <color name="avatarBgColor">#B0B5BC</color>
 </resources>
